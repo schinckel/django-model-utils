@@ -314,6 +314,16 @@ class TrackedMultiple(models.Model):
 class InheritedTracked(Tracked):
     name2 = models.CharField(max_length=20)
 
+class AbstractTracked(models.Model):
+    name = models.CharField(max_length=20)
+    
+    tracker = FieldTracker()
+    
+    class Meta:
+        abstract = True
+
+class InheritedFromAbstractTracked(AbstractTracked):
+    name2 = models.CharField(max_length=20)
 
 class ModelTracked(models.Model):
     name = models.CharField(max_length=20)
